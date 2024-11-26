@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 상단 이미지와 텍스트 -->
+    <LinearLayout
+        android:id="@+id/top_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/list_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/profile"
+            android:contentDescription="List Image" />
+
+        <TextView
+            android:id="@+id/list_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="***님 안녕하세요!"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- 중간 텍스트뷰와 버튼 -->
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:text="오늘의 걸음 *** 걸음"
+        android:textSize="16sp"
+        android:layout_below="@id/top_section" />
+
+    <Button
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="찜 목록"
+        android:layout_below="@id/description_text"
+        android:layout_marginTop="8dp"/>
+
+    <!-- 하단 버튼들 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:weightSum="3"
+        android:layout_below="@id/action_button">
+
+        <Button
+            android:id="@+id/edit_info_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="회원 정보 수정" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="커뮤니티 기록" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="로그아웃" />
+    </LinearLayout>
+
+    <!-- 하단 네비게이션 바 -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="#FFFFFF"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/list_nav_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFA500"
+            android:contentDescription="List"
+            android:src="@drawable/list" />
+
+        <ImageView
+            android:id="@+id/home_nav_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="Home"
+            android:src="@drawable/home" />
+
+        <ImageView
+            android:id="@+id/community_nav_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="Community"
+            android:src="@drawable/community" />
+    </LinearLayout>
+
+</RelativeLayout>

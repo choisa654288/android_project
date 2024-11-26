@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/map">
+
+    <!-- Profile Icon -->
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp"
+        android:contentDescription="Profile"
+        android:src="@drawable/profile" />
+
+    <!-- Current Step Icon -->
+    <ImageView
+        android:id="@+id/current_step_icon"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Current Step"
+        android:src="@drawable/steps" />
+
+    <!-- Walk Space Icon -->
+    <ImageView
+        android:id="@+id/walk_space_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:contentDescription="Walk Space"
+        android:src="@drawable/walk_space" />
+
+    <!-- Current Location Icon -->
+    <ImageView
+        android:id="@+id/current_location_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/walk_space_icon"
+        android:layout_marginTop="50dp"
+        android:contentDescription="Current Location"
+        android:src="@drawable/current_location" />
+
+    <!-- Bottom Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="#FFFFFF">
+
+        <!-- List Button -->
+        <ImageView
+            android:id="@+id/list_button"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:contentDescription="List"
+            android:src="@drawable/list" />
+
+        <!-- Home Button with Orange Background -->
+        <ImageView
+            android:id="@+id/home_button"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:background="#FFA500"
+            android:contentDescription="Home"
+            android:src="@drawable/home" />
+
+        <!-- Community Button -->
+        <ImageView
+            android:id="@+id/community_button"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:contentDescription="Community"
+            android:src="@drawable/community" />
+    </LinearLayout>
+
+</RelativeLayout>
