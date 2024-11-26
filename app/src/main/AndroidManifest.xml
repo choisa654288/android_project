@@ -22,6 +22,7 @@
         <activity android:name=".CommunityActivity"
                   android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".edit_information" />
+        <activity android:name=".EditProfileActivity" />
 
 
     </application>

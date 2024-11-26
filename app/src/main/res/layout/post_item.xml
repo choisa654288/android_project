@@ -1,56 +1,106 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="8dp"
     android:background="#F9F9F9"
     android:layout_marginBottom="8dp">
 
-    <!-- 프로필 이미지 -->
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center_vertical"
-        android:src="@drawable/profile"
-        android:scaleType="centerCrop"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/profile" />
-
-    <!-- 닉네임 및 글 내용 -->
+    <!-- 게시글 내용 -->
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <!-- 닉네임 -->
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nickname"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#000000" />
+        <!-- 프로필 이미지 -->
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/profile"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="8dp" />
 
-        <!-- 글 내용 -->
-        <TextView
-            android:id="@+id/post_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Post content"
-            android:textSize="14sp"
-            android:textColor="#444444"
-            android:layout_marginTop="4dp" />
+        <!-- 닉네임 및 글 내용 -->
+        <LinearLayout
+            android:layout_width="238dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- 닉네임 -->
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nickname"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- 글 내용 -->
+            <TextView
+                android:id="@+id/post_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Post content"
+                android:textColor="#444444"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- 좋아요 버튼 -->
+        <ImageButton
+            android:id="@+id/like_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/like" />
     </LinearLayout>
 
-    <!-- 좋아요 버튼 -->
-    <ImageButton
-        android:id="@+id/like_button"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/like"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_gravity="center_vertical" />
+    <!-- 글 게시 시간 -->
+    <TextView
+        android:id="@+id/post_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2분 전"
+        android:textSize="12sp"
+        android:textColor="#888888"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="56dp" />
+
+    <!-- 댓글 입력 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <EditText
+            android:id="@+id/comment_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="댓글을 입력하세요"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/comment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="게시" />
+    </LinearLayout>
+
+    <!-- 댓글 리스트 -->
+    <LinearLayout
+        android:id="@+id/comment_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+        <!-- 댓글은 게시 버튼 클릭 시 추가됨 -->
+    </LinearLayout>
 </LinearLayout>
