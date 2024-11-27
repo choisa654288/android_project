@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.project">
+    <!-- 필요한 권한 추가 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,26 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight">
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".loginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ListActivity" />
-        <activity android:name=".CommunityActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".CommunityActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".edit_information" />
-        <activity android:name=".EditProfileActivity" />
-
-
     </application>
-
-    <!-- 필요한 권한 추가 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- 예: 인터넷 권한 -->
 
 </manifest>
