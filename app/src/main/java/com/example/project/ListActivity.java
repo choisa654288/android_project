@@ -1,11 +1,21 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ListActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity implements SensorEventListener {
+
+    private SensorManager sensorManager;
+    private Sensor stepCounterSensor;
+    private int stepCount = 0; // 걸음 수 저장 변수
+    private TextView stepCountTextView; // 걸음 수를 표시할 TextView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,21 @@ public class ListActivity extends AppCompatActivity {
             welcomeText.setText(userNickName + " 님 안녕하세요!");
         }
 
+        // 걸음 수 표시 TextView 연결
+        stepCountTextView = findViewById(R.id.description_text);
+
+        // SensorManager 초기화
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        if (sensorManager != null) {
+            stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        }
+
+        // 센서 확인
+        if (stepCounterSensor == null) {
+            Toast.makeText(this, "만보기 센서를 지원하지 않는 기기입니다.", Toast.LENGTH_LONG).show();
+            stepCountTextView.setText("만보기 기능을 사용할 수 없습니다.");
+        }
+
         // Home 버튼 클릭 시 MainActivity로 이동
         findViewById(R.id.home_nav_button).setOnClickListener(view -> {
             Intent intent1 = new Intent(ListActivity.this, MainActivity.class);
@@ -44,5 +69,40 @@ public class ListActivity extends AppCompatActivity {
             Intent intent3 = new Intent(ListActivity.this, edit_information.class); // 클래스 이름도 EditInformationActivity로 수정
             startActivity(intent3);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (stepCounterSensor != null) {
+            sensorManager.registerListener(this, stepCounterSensor, SensorManager.SENSOR_DELAY_UI);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (stepCounterSensor != null) {
+            sensorManager.unregisterListener(this);
+        }
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            stepCount = (int) event.values[0];
+            updateStepCountUI();
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // 정확도 변경 이벤트 처리 (필요 없으면 비워둡니다)
+    }
+
+    private void updateStepCountUI() {
+        if (stepCountTextView != null) {
+            stepCountTextView.setText("오늘의 걸음: " + stepCount + " 걸음");
+        }
     }
 }
