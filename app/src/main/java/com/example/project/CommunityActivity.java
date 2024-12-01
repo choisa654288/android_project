@@ -11,7 +11,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CommunityActivity extends AppCompatActivity {
 
@@ -19,12 +22,14 @@ public class CommunityActivity extends AppCompatActivity {
     private Button sendPostButton;  // 전송 버튼
     private LinearLayout postList;  // 글 리스트를 표시할 레이아웃
     private String userEmail;  // 사용자 이메일
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community);
 
+        firestore = FirebaseFirestore.getInstance();
         // userEmail을 loginActivity에서 받은 값으로 초기화
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("userEmail");
@@ -77,6 +82,17 @@ public class CommunityActivity extends AppCompatActivity {
 
     // 새로운 글을 추가하는 메서드
     private void addNewPost(String userName, String postContent) {
+        Post post = new Post(userName, postContent, System.currentTimeMillis());
+        firestore.collection("posts")
+                .add(post)
+                .addOnSuccessListener(documentReference -> {
+                    // Firestore 저장 성공 시 처리
+                    Toast.makeText(this, "게시물이 업로드되었습니다!", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    // Firestore 저장 실패 시 처리
+                    Toast.makeText(this, "게시물 업로드 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
         // post_item.xml 레이아웃을 불러옴
         LayoutInflater inflater = LayoutInflater.from(this);
         View postView = inflater.inflate(R.layout.post_item, postList, false);

@@ -3,6 +3,7 @@
     package="com.example.project">
     <!-- 필요한 권한 추가 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -38,6 +40,9 @@
             android:name=".CommunityActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".edit_information" />
+        <activity android:name=".CommunityHistoryActivity"/>
+        <activity android:name=".PostActivity"/>
     </application>
+
 
 </manifest>
