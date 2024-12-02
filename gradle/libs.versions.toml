@@ -11,6 +11,9 @@ googleGmsGoogleServices = "4.4.2"
 firebaseAuth = "23.1.0"
 firebaseFirestore = "25.1.1"
 firebaseStorage = "21.0.1"
+playServicesMaps = "19.0.0"
+playSevicesLocation = "19.0.1"
+playSevicesMaps = "18.0.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -23,6 +26,9 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-sevices-location = { module = "com.google.android.gms:play-sevices-location", version.ref = "playSevicesLocation" }
+play-sevices-maps = { module = "com.google.android.gms:play-sevices-maps", version.ref = "playSevicesMaps" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

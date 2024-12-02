@@ -1,27 +1,44 @@
 package com.example.project;
 
-import android.content.Intent;
-import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import android.os.Bundle;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Additional setup for buttons if needed.
-        // For example, setting click listeners on navigation buttons
-        findViewById(R.id.list_button).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, ListActivity.class);
-            startActivity(intent);
-            // Home button can be set as active, so no click listener needed
-        });
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
+        mapFragment.getMapAsync(this);
+    }
 
-        findViewById(R.id.community_button).setOnClickListener(view->{
-            Intent intent=new Intent(MainActivity.this, CommunityActivity.class);
-            startActivity(intent);
-        });
+
+    @Override
+    public void onMapReady(final GoogleMap googleMap) {
+
+        LatLng SEOUL = new LatLng(37.56, 126.97);
+
+        MarkerOptions markerOptions = new MarkerOptions();         // 마커 생성
+        markerOptions.position(SEOUL);
+        markerOptions.title("서울");                         // 마커 제목
+        markerOptions.snippet("한국의 수도");         // 마커 설명
+        googleMap.addMarker(markerOptions);
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));                 // 초기 위치
+        googleMap.animateCamera(CameraUpdateFactory.zoomTo(15));                         // 줌의 정도
+        googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);                           // 지도 유형 설정
 
     }
+
 }
