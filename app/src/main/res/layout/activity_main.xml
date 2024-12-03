@@ -14,17 +14,6 @@
         android:contentDescription="Profile"
         android:src="@drawable/profile" />
 
-    <!-- Current Step Icon -->
-    <ImageView
-        android:id="@+id/current_step_icon"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:contentDescription="Current Step"
-        android:src="@drawable/steps" />
-
     <!-- Walk Space Icon -->
     <ImageView
         android:id="@+id/walk_space_icon"
